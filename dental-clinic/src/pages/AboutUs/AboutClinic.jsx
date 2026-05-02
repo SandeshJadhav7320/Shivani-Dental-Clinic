@@ -3,11 +3,12 @@ import vision from "../../assets/vision.jpg";
 import mission from "../../assets/mission.jpg";
 import motto from "../../assets/motto.jpg";
 import hospitalimage2 from "../../assets/hospitalimage2.jpg";
+import Footer from "../../components/Footer.jsx";
 
 
 function AboutClinic() {
   return (
-    <div className="bg-gray-100">
+    <div className="bg-whitw">
 
       {/* HERO SECTION */}
       <div className="bg-blue-600 text-white text-center py-16 px-6">
@@ -34,7 +35,7 @@ function AboutClinic() {
         {/* Content */}
         <div>
           <h2 className="text-4xl font-bold text-blue-600">
-            SSmileVille Braces & Dental Care
+            Dr. Shivani’s Dental Braces & Dental Care
           </h2>
 
           <p className="mt-4 text-gray-700 leading-relaxed text-xl">
@@ -44,7 +45,7 @@ function AboutClinic() {
           </p>
 
           <p className="mt-4 text-gray-700 text-xl">
-            Located in Ravet, Pradhikaran, we offer a wide range of dental
+            Located in Wakad | Hinjewadi, Pune, we offer a wide range of dental
             services under one roof.
           </p>
         </div>
@@ -172,7 +173,7 @@ function AboutClinic() {
 
 
       {/* CTA */}
-      <div className="text-center py-12 bg-blue-600 text-white mt-40">
+      <div className="text-center py-12 bg-white text-white mt-40">
         <h2 className="text-3xl font-bold">
           Book Your Appointment Today
         </h2>
@@ -181,7 +182,7 @@ function AboutClinic() {
           Get Appointment
         </button>
       </div>
-
+    <Footer />
     </div>
   );
 }

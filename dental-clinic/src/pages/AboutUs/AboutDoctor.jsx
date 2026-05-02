@@ -36,8 +36,8 @@ function AboutDoctor() {
             </p><br></br>
 
             <p className="mt-4 text-gray-700 leading-relaxed text-2xl">
-              As a aligner & braces specialist, she provides expert orthodontic care at SSmileVille Braces
-               and Dental Care in Ravet, Pradhikaran. She is also a faculty member at a reputed dental college, 
+              As a aligner & braces specialist, she provides expert orthodontic care at Dr. Shivani’s Dental Braces
+               and Dental Care in Wakad | Hinjewadi, Pune. She is also a faculty member at a reputed dental college, 
                where she shares her advanced knowledge with aspiring dentists.
             </p>
           </div>
@@ -51,7 +51,7 @@ function AboutDoctor() {
           >
             <h2 className="text-3xl font-bold text-blue-500">Education</h2>
             <p className="mt-4 text-gray-700 leading-relaxed text-xl">
-              Dr. Sujata A. Yerawadekar has received her dental education from a reputed institution and 
+              Dr. Shivani has received her dental education from a reputed institution and 
               continues to stay updated with the latest advancements in dentistry with an <b>15 years Experience.</b>
             </p><br></br>
             <ul className="mt-4 space-y-2 grid grid-cols-2 gap-6 text-gray-700 text-xl font-sans">
@@ -72,7 +72,7 @@ function AboutDoctor() {
             </h2>
 
             <p className="mt-4 text-gray-700 leading-relaxed text-xl">
-              Dr. Sujata A. Yerawadekar holds a specialization in Orthodontics and Dentofacial Orthopedics, backed by extensive education and training from a reputed dental institution
+              Dr. Shivani holds a specialization in Orthodontics and Dentofacial Orthopedics, backed by extensive education and training from a reputed dental institution
             </p><br></br>
 
             <ul className="mt-4 grid grid-cols-2 gap-2 text-gray-700 text-xl">
@@ -92,7 +92,7 @@ function AboutDoctor() {
             >
             <h2 className="text-2xl font-bold text-blue-500">Awards</h2>
             <p className="mt-4 text-gray-700 leading-relaxed text-xl">
-              Dr Sujata Yerawadekar is a recognized professional in the field of dentistry, actively associated with reputed dental organizations and officially registered with the state dental council since 2011
+              Dr. Shivani is a recognized professional in the field of dentistry, actively associated with reputed dental organizations and officially registered with the state dental council since 2011
             </p><br></br>
 
             <ul className="mt-4 space-y-2 text-gray-700 text-xl grid grid-cols-2">
