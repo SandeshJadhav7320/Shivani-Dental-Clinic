@@ -12,6 +12,7 @@ import Implants from "./pages/Services/implants";
 import Kidsdentistry from "./pages/Services/kids-dentistry";
 import RootCanal from "./pages/Services/root-canal";
 import Crowns from "./pages/Services/crowns";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/braces" element={<Braces/>} />
         <Route path="/root-canal" element={<RootCanal/>} />
         <Route path="/kids-dentistry" element={<Kidsdentistry/>} />
+        <Route path="/contact" element={<Contact/>}/>
       </Routes>
     </BrowserRouter>
   );

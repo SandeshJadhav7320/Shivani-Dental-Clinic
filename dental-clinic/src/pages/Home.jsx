@@ -1,5 +1,6 @@
-import heroImg from "../assets/hero.jpg";
-import { motion } from "framer-motion";
+
+import { motion, AnimatePresence  } from "framer-motion";
+
 import {
   FaTooth,
   FaSmile,
@@ -9,16 +10,53 @@ import {
   FaNotesMedical,
 } from "react-icons/fa";
 
+import hero1 from "../assets/hero1.jpg";
+import hero2 from "../assets/hero2.jpg";
+import hero3 from "../assets/hero3.jpg";
+import hero4 from "../assets/hero4.jpg";
+import hero5 from "../assets/hero5.jpg";
+
 import { GiToothbrush } from "react-icons/gi";
 import img1 from "../assets/dental-care-5.jpg";
 import img2 from "../assets/dental-care-6.jpg";
 import img3 from "../assets/tooth-2.jpg";
-import homeabout from "../assets/homeabout.jpg";
+import homeabout from "../assets/DrShivani.jpg";
 import '../App.css'
 import Footer from "../components/Footer.jsx";
+import { useState, useEffect } from "react";
+import { TypeAnimation } from "react-type-animation";
 
 
 function Home() {
+
+  const images = [
+    hero1,
+    hero2,
+    hero3,
+    hero4,
+    hero5
+  ];
+
+  const [currentImage, setCurrentImage] = useState(0);
+
+      useEffect(() => {
+      const interval = setInterval(() => {
+        setCurrentImage((prev) =>
+          prev === images.length - 1 ? 0 : prev + 1
+        );
+      }, 4000);
+
+      return () => clearInterval(interval);
+    }, []);
+
+    const texts = [
+      "Best Dental Clinic in Pune",
+      "Advanced Dental Care",
+      "Braces & Aligners Specialist",
+      "Root Canal Expert",
+      "Your Smile, Our Priority"
+    ];
+
   const services = [
   {
     title: "Aligners & Gum Surgery",
@@ -67,34 +105,71 @@ function Home() {
     <div>
       <div className="animated-bg min-h-screen">
       {/* HERO SECTION */}
-      <section
-        className="relative h-[110vh] bg-cover bg-center "
-        style={{ backgroundImage: `url(${heroImg})` }}
-      >
+      <section className="relative h-screen overflow-hidden">
+
+        <AnimatePresence mode="wait">
+            <motion.div
+              key={currentImage}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.5 }}
+              className="absolute inset-0 bg-cover bg-center"
+              style={{
+                backgroundImage: `url(${images[currentImage]})`,
+              }}
+            />
+          </AnimatePresence>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/20"></div>
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/20"></div>
+        
 
         {/* Center Glass Card */}
-        <div className="absolute inset-0 flex items-center justify-center px-4">
-          <div className=" backdrop-blur-xl p-8 rounded-2xl shadow-2xl text-center max-w-md transition hover:scale-105 bg-transparent duration-500 animate-float">
+        <div className="relative z-10 h-full flex items-center">
+          <div className="max-w-7xl mx-auto w-full px-10">
+              <div className="max-w-4xl">
             
-            <p className="text-xl text-black font-semibold tracking-wide">
-              Dr. Shivani’s Dental & Aesthetic
-            </p>
+            <TypeAnimation
+              sequence={[
+                "Dr. Shivani’s Dental & Aesthetic",
+                2000,
+              ]}
+              wrapper="p"
+              speed={50}
+              className="text-4xl md:text-6xl lg:text-7xl font-bold text-white"
+              repeat={0}
+            />
 
-            <h1 className="text-3xl md:text-4xl font-bold text-orange-300 mt-3 leading-tight">
-              Best Dental Clinic in  Wakad | Hinjewadi, Pune
-            </h1>
+            <TypeAnimation
+              key={currentImage}
+              sequence={[texts[currentImage]]}
+              speed={50}
+              wrapper="h1"
+              repeat={0}
+              className="text-lg md:text-2xl lg:text-3xl text-white mt-6"
+            />
 
-            <p className="text-black mt-3 text-sm">
+            <p className="text-black mt-8 text-4xl">
               Your Smile, Our Passion! Advanced & Painless Dental Care
             </p>
 
-            <button className="mt-6 bg-pink-500 text-white px-6 py-2 rounded-full shadow hover:bg-pink-600 transition">
+            <div className="mt-10 flex gap-6">
+              <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full transition">
+                Book Appointment
+              </button>
+
+              <button className="border-2 border-white text-white px-8 py-4 rounded-full hover:bg-white hover:text-blue-600 transition">
+                Learn More
+              </button>
+            </div>
+
+            {/* <button className="mt-8 bg-pink-500 text-white px-10 py-6 rounded-full shadow hover:bg-pink-600 transition">
               Discover More
-            </button>
+            </button> */}
           </div>
         </div>
+       </div>
 
         {/* DOWNWARD CURVE */}
             <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
@@ -109,7 +184,11 @@ function Home() {
                   d="M0,96L80,117.3C160,139,320,181,480,197.3C640,213,800,203,960,176C1120,149,1280,107,1360,85.3L1440,64L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
                 ></path>
               </svg>
-
+                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+                  <span className="text-black text-3xl">
+                    ↓
+                  </span>
+                </div>
             </div>
       </section>
 
@@ -132,7 +211,7 @@ function Home() {
                   <img
                     src={img1}
                     alt="care"
-                    className="w-38 h-38 rounded-full object-cover"
+                    className="w-40 h-40 rounded-full object-cover"
                   />
                 </div>
 
@@ -150,6 +229,10 @@ function Home() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1 }}
+              whileHover={{
+                scale: 1.05,
+                rotate: 1
+              }}
               className="bg-white  backdrop-blur-xl p-10 rounded-2xl
                         shadow-2xl text-center max-w-md transform
                         hover:scale-105 transition "
@@ -159,7 +242,7 @@ function Home() {
                   <img
                     src={img3}
                     alt="smile"
-                    className="w-38 h-38 rounded-full object-cover"
+                    className="w-40 h-40 rounded-full object-cover"
                   />
                 </div>
 
@@ -200,68 +283,141 @@ function Home() {
               Get connected with us!
             </p>
 
-      </motion.div>
+      </motion.div> 
 
         </div>
       </div>
 
       {/* ABOUT US SECTION */}
-        <div className="w-full mx-auto px-6 py-20 bg-white">
+        <section className="bg-white py-24 px-6 overflow-hidden">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
 
-          <div className="grid md:grid-cols-2 gap-2 items-center">
+        {/* LEFT SIDE IMAGE */}
+        <motion.div
+          initial={{ opacity: 0, x: -80 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+          className="relative"
+        >
+          {/* Circle Background */}
+          <div className="absolute -left-24 top-0 w-[600px] h-[600px] bg-gray-100 rounded-full z-0"></div>
 
-            {/* LEFT IMAGE */}
-            <div className="flex justify-center">
-              <img
-                src={homeabout}
-                alt="Dental Clinic"
-                className="w-full max-w-md h-[500px] object-cover
-           rounded-md shadow-xl border-2 border-blue-400
-           hover:scale-105 transition duration-500
-           animate-float"
-              />
+          {/* Image */}
+          <img
+            src={homeabout}
+            alt="Doctor"
+            className="relative z-10 w-full max-w-xl mx-auto rounded-lg shadow-xl"
+          />
+        </motion.div>
+
+        {/* RIGHT CONTENT */}
+        <motion.div
+          initial={{ opacity: 0, x: 80 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+        >
+          <p className="uppercase tracking-[4px] text-blue-600 font-semibold font-serif">
+            About Us
+          </p>
+
+          <h2 className="text-5xl font-bold text-gray-800 mt-4 leading-tight">
+            Compassionate Care <br />
+            For Your Perfect Smile
+          </h2>
+
+          <div className="w-20 h-1 bg-blue-500 mt-6 mb-8"></div>
+
+          <p className="text-gray-600 text-lg leading-8">
+            Dr. Shivani’s Dental & Aesthetic is dedicated to providing
+            advanced, painless and personalized dental care.
+            Your smile is our passion and commitment.
+          </p>
+
+          {/* FEATURES */}
+          <div className="mt-10 space-y-8">
+
+            <div className="flex items-start gap-5">
+              <div className="w-16 h-16 rounded-xl bg-blue-50 flex items-center justify-center text-3xl">
+                🦷
+              </div>
+
+              <div>
+                <h3 className="text-xl font-bold text-blue-600">
+                  Advanced Technology
+                </h3>
+
+                <p className="text-gray-600">
+                  Modern equipment for precise treatments.
+                </p>
+              </div>
             </div>
 
-            {/* RIGHT CONTENT */}
-            <div>
+            <div className="flex items-start gap-5">
+              <div className="w-16 h-16 rounded-xl bg-blue-50 flex items-center justify-center text-3xl">
+                🛡️
+              </div>
 
-              {/* SMALL TITLE */}
-              <p className="text-pink-400 uppercase tracking-[4px] font-semibold">
-                About Us
-              </p>
+              <div>
+                <h3 className="text-xl font-bold text-blue-600">
+                  Safe & Hygienic
+                </h3>
 
-              {/* MAIN HEADING */}
-              <h2 className="text-5xl font-bold text-blue-400 leading-tight mt-2">
-                Best Dental Clinic in Wakad 
-              </h2>
+                <p className="text-gray-600">
+                  Highest standards of sterilization and safety.
+                </p>
+              </div>
+            </div>
 
-              {/* DESCRIPTION */}
-              <p className="text-gray-700 leading-9 mt-8 text-justify">
-                Dr. Shivani’s Dental Braces and Dental Care takes pleasure in introducing
-                itself as one of the exclusive, professionally managed, well-equipped
-                dental care centers in Ravet, Pradhikaran area.
-              </p>
+            <div className="flex items-start gap-5">
+              <div className="w-16 h-16 rounded-xl bg-blue-50 flex items-center justify-center text-3xl">
+                👨‍⚕️
+              </div>
 
-              <p className="text-gray-700 leading-9 mt-4 text-lg">
-                We believe in delivering the best results with advanced technology,
-                personalized care, and expert dental treatments for healthy and
-                confident smiles.
-              </p>
+              <div>
+                <h3 className="text-xl font-bold text-blue-600">
+                  Expert Team
+                </h3>
 
-              {/* BUTTON */}
-              <button
-                className="mt-10 bg-pink-400 text-white px-8 py-4 rounded-md
-                          font-semibold shadow-lg
-                          hover:bg-pink-500 hover:scale-105
-                          transition duration-300"
-              >
-                Discover More
-              </button>
-
+                <p className="text-gray-600">
+                  Experienced professionals dedicated to your smile.
+                </p>
+              </div>
             </div>
 
           </div>
+        </motion.div>
+      </div>
+
+      {/* STATS CARD */}
+      <motion.div
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+        className="max-w-4xl mx-auto mt-16 bg-white shadow-xl rounded-3xl p-8"
+      >
+        <div className="grid md:grid-cols-3 text-center">
+
+          <div>
+            <h3 className="text-5xl font-bold text-blue-600">15+</h3>
+            <p className="text-gray-600 mt-2">Years Experience</p>
+          </div>
+
+          <div>
+            <h3 className="text-5xl font-bold text-blue-600">5000+</h3>
+            <p className="text-gray-600 mt-2">Happy Patients</p>
+          </div>
+
+          <div>
+            <h3 className="text-5xl font-bold text-blue-600">1000+</h3>
+            <p className="text-gray-600 mt-2">Successful Treatments</p>
+          </div>
+
         </div>
+      </motion.div>
+    </section>
 
         {/* OUR SERVICES */}
           <section className="bg-white py-24 px-6">

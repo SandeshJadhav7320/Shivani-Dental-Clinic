@@ -1,12 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import logo from "../assets/symbol.jpeg";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-const [openDropdown, setOpenDropdown] = useState(null);
+  const [openDropdown, setOpenDropdown] = useState(null);
   const location = useLocation();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+      const handleScroll = () => {
+        if (window.scrollY > 80) {
+          setScrolled(true);
+        } else {
+          setScrolled(false);
+        }
+      };
+
+      window.addEventListener("scroll", handleScroll);
+
+      return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
   const navLinks = [
   { name: "Home", path: "/" },
@@ -33,8 +48,16 @@ const [openDropdown, setOpenDropdown] = useState(null);
 ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md shadow-md">
-      <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+    <nav
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+          scrolled
+            ? "bg-white/90 backdrop-blur-md shadow-lg"
+            : "bg-transparent"
+        }`}
+      >
+      <div className={`max-w-7xl mx-auto px-6 flex justify-between items-center transition-all duration-500 ${
+          scrolled ? "py-2" : "py-4"
+        }`}>
 
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-3">
@@ -43,7 +66,9 @@ const [openDropdown, setOpenDropdown] = useState(null);
             alt="Clinic Logo"
             className="h-10 w-10 md:h-12 md:w-12 object-contain"
           />
-          <h1 className="text-lg md:text-xl font-bold text-blue-600 leading-tight">
+          <h1 className={`text-lg md:text-xl font-bold ${
+              scrolled ? "text-blue-600" : "text-white"
+            }`}>
             Dr. Shivani’s Dental
           </h1>
         </Link>
@@ -58,10 +83,12 @@ const [openDropdown, setOpenDropdown] = useState(null);
       <Link
         to={link.path}
         className={`font-medium ${
-          location.pathname === link.path
-            ? "text-blue-600"
-            : "text-gray-700 hover:text-blue-600"
-        }`}
+        location.pathname === link.path
+          ? "text-orange-400"
+          : scrolled
+          ? "text-gray-700 hover:text-blue-600"
+          : "text-white hover:text-orange-300"
+      }`}
       >
         {link.name}
       </Link>
@@ -74,7 +101,11 @@ const [openDropdown, setOpenDropdown] = useState(null);
           onClick={() =>
             setOpenDropdown(openDropdown === link.name ? null : link.name)
           }
-          className="font-medium text-gray-700 hover:text-blue-600"
+          className={`font-medium ${
+          scrolled
+            ? "text-gray-700 hover:text-blue-600"
+            : "text-white hover:text-orange-300"
+        }`}
         >
           {link.name} ▾
         </button>
