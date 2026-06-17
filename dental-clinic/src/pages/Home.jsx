@@ -1,5 +1,8 @@
 
 import { motion, AnimatePresence  } from "framer-motion";
+import CountUpModule from "react-countup";
+const CountUp = CountUpModule.default;
+import { useInView } from "react-intersection-observer";
 
 import {
   FaTooth,
@@ -26,6 +29,15 @@ import Footer from "../components/Footer.jsx";
 import { useState, useEffect } from "react";
 import { TypeAnimation } from "react-type-animation";
 
+import bracesImg from "../assets/service.jpg";
+import alignersImg from "../assets/service2.jpg";
+import implantImg from "../assets/service3.jpg";
+import rootCanalImg from "../assets/service4.jpg";
+import checkupImg from "../assets/service5.jpg";
+import crownsImg from "../assets/service6.jpg";
+
+console.log("CountUp =", CountUp)
+
 
 function Home() {
 
@@ -39,6 +51,8 @@ function Home() {
 
   const [currentImage, setCurrentImage] = useState(0);
 
+
+
       useEffect(() => {
       const interval = setInterval(() => {
         setCurrentImage((prev) =>
@@ -48,6 +62,10 @@ function Home() {
 
       return () => clearInterval(interval);
     }, []);
+    
+    const { ref, inView } = useInView({
+        triggerOnce: true,
+      });
 
     const texts = [
       "Best Dental Clinic in Pune",
@@ -57,50 +75,44 @@ function Home() {
       "Your Smile, Our Priority"
     ];
 
-  const services = [
+const services = [
   {
     title: "Aligners & Gum Surgery",
-    description:
-      "Advanced aligner treatments and gum care solutions for a healthy and confident smile.",
-    icon: <FaSmile />,
+    description: "Advanced aligner treatments and gum care solutions.",
+    image: alignersImg,
   },
 
   {
     title: "Crowns and Bridges",
-    description:
-      "Restore damaged or missing teeth with durable and natural-looking crowns and bridges.",
-    icon: <FaTeeth />,
+    description: "Restore damaged or missing teeth.",
+    image: crownsImg,
   },
 
   {
     title: "Dental Checkup & X-Rays",
-    description:
-      "Comprehensive dental examinations and digital X-rays for accurate diagnosis and treatment.",
-    icon: <FaNotesMedical />,
+    description: "Comprehensive dental examinations.",
+    image: checkupImg,
   },
 
   {
     title: "Dental Implants",
-    description:
-      "Permanent and natural-looking tooth replacement solutions with modern implant technology.",
-    icon: <FaTooth />,
+    description: "Permanent tooth replacement solutions.",
+    image: implantImg,
   },
 
   {
     title: "Orthodontics (Braces)",
-    description:
-      "Straighten teeth and improve smiles with advanced braces and orthodontic treatments.",
-    icon: <GiToothbrush />,
+    description: "Straighten teeth with braces.",
+    image: bracesImg,
   },
 
   {
     title: "Root Canal Specialist",
-    description:
-      "Painless root canal treatments to save infected teeth and restore oral health.",
-    icon: <FaUserMd />,
+    description: "Painless root canal treatments.",
+    image: rootCanalImg,
   },
-
 ];
+
   return (
     <div>
       <div className="animated-bg min-h-screen">
@@ -318,7 +330,7 @@ function Home() {
           transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          <p className="uppercase tracking-[4px] text-blue-600 font-semibold font-serif">
+          <p className="uppercase tracking-[0.5px] text-blue-600 font-semibold font-serif journey-font">
             About Us
           </p>
 
@@ -392,27 +404,78 @@ function Home() {
 
       {/* STATS CARD */}
       <motion.div
-        initial={{ opacity: 0, y: 60 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-        viewport={{ once: true }}
-        className="max-w-4xl mx-auto mt-16 bg-white shadow-xl rounded-3xl p-8"
-      >
+          ref={ref}
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto mt-16 bg-white shadow-xl rounded-3xl p-8"
+        >
         <div className="grid md:grid-cols-3 text-center">
 
           <div>
-            <h3 className="text-5xl font-bold text-blue-600">15+</h3>
-            <p className="text-gray-600 mt-2">Years Experience</p>
+            <h3 className="text-5xl font-bold text-blue-600">
+              <CountUp
+                start={0}
+                end={15}
+                duration={5}
+                enableScrollSpy
+                scrollSpyOnce
+              />
+              +
+            </h3>
+            <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 1 }}
+                className="text-gray-600 mt-2 font-semibold"
+              >
+                Years Experience
+              </motion.p>
           </div>
 
           <div>
-            <h3 className="text-5xl font-bold text-blue-600">5000+</h3>
-            <p className="text-gray-600 mt-2">Happy Patients</p>
+            <h3 className="text-5xl font-bold text-blue-600">
+                <CountUp
+                  start={0}
+                  end={5000}
+                  duration={5}
+                  separator=","
+                  enableScrollSpy
+                  scrollSpyOnce
+                />
+                +
+              </h3>
+            <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 1 }}
+                className="text-gray-600 mt-2 font-semibold"
+              >
+                Happy Patients
+              </motion.p>
           </div>
 
           <div>
-            <h3 className="text-5xl font-bold text-blue-600">1000+</h3>
-            <p className="text-gray-600 mt-2">Successful Treatments</p>
+            <h3 className="text-5xl font-bold text-blue-600">
+                <CountUp
+                  start={0}
+                  end={1000}
+                  duration={5}
+                  separator=","
+                  enableScrollSpy
+                  scrollSpyOnce
+                />
+                +
+              </h3>
+            <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 1 }}
+                className="text-gray-600 mt-2 font-semibold"
+              >
+                Successful Treatments
+              </motion.p>
           </div>
 
         </div>
@@ -424,14 +487,31 @@ function Home() {
 
             {/* HEADING */}
             <div className="text-center max-w-3xl mx-auto">
+              <div
+                  className="absolute top-0 left-0 w-full h-1
+                            bg-gradient-to-r
+                            from-pink-500
+                            via-blue-500
+                            to-pink-500"
+                />
 
-              <p className="text-pink-500 uppercase tracking-[4px] font-bold text-4xl">
-                Our Services
-              </p>
+              <motion.p
+                  initial={{ opacity: 0, y: -30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                  className="text-pink-500 uppercase tracking-[6px] font-bold text-4xl"
+                >
+                  Our Services
+                </motion.p>
 
-              <h2 className="text-3xl font-bold text-blue-600 mt-3">
+              <motion.h2
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 1 }}
+                className="text-4xl font-bold mt-3 bg-gradient-to-r from-blue-600 via-pink-500 to-blue-600 bg-clip-text text-transparent"
+              >
                 Complete Dental Care Solutions
-              </h2>
+              </motion.h2>
 
               <p className="text-gray-600 mt-6 text-lg leading-8">
                 Advanced, painless, and personalized dental treatments
@@ -442,45 +522,78 @@ function Home() {
 
             {/* SERVICES GRID */}
             <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 mt-16">
+              
 
                 {services.map((service, index) => (
 
                   <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    whileHover={{ y: -10 }}
-                    className={`bg-white rounded-3xl p-10 shadow-lg
-            hover:shadow-2xl transition-all duration-500
-            text-center group animate-float
-            ${index % 3 === 0 ? "float-delay-1" : ""}
-            ${index % 3 === 1 ? "float-delay-2" : ""}
-            ${index % 3 === 2 ? "float-delay-3" : ""}`}
-                  >
+                      key={index}
+                      initial={{ opacity: 0, y: 80 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{
+                        duration: 0.8,
+                        delay: index * 0.15,
+                      }}
+                      viewport={{ once: true }}
+                      whileHover={{
+                        y: -15,
+                        scale: 1.05,
+                        rotateY: 5,
+                      }}
+                      className="bg-white
+                                  hover:bg-blue-50
+                                  rounded-3xl
+                                  p-8
+                                  shadow-xl
+                                  hover:shadow-blue-300/50
+                                  transition-all duration-500
+                                  text-center
+                                  group
+                                  overflow-hidden
+                                  relative"
+                    >
 
                     {/* ICON */}
-                    <div className="flex justify-center">
-
-                      <div className="bg-blue-100 p-5 rounded-full
-                                      group-hover:bg-pink-100 transition">
-
-                        <div className="text-5xl text-blue-600
-                                        group-hover:text-pink-500 transition">
-
-                          {service.icon}
-
-                        </div>
-
-                      </div>
-
+                    <div className=" flex justify-center mb-6">
+                      <motion.img
+                          src={service.image}
+                          alt={service.title}
+                          className="w-64 h-64 object-contain mx-auto"
+                          animate={{
+                            y: [0, -10, 0],
+                          }}
+                          transition={{
+                            duration: 3,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                          }}
+                          whileHover={{
+                            scale: 1.1,
+                          }}
+                        />
                     </div>
+                    <div
+                      className="absolute inset-0
+                                  bg-gradient-to-br
+                                  from-blue-100
+                                  via-pink-50
+                                  to-blue-100
+                                  opacity-0
+                                  group-hover:opacity-100
+                                  transition-all duration-500
+                                "
+                    />
 
                     {/* TITLE */}
-                    <h3 className="text-2xl font-bold text-gray-800 mt-6">
-                      {service.title}
-                    </h3>
+                    <motion.h3
+                        whileHover={{
+                          scale: 1.05,
+                          color: "#2563eb",
+                        }}
+                        className="text-2xl font-bold text-gray-800 mt-6"
+                      >
+                        {service.title}
+                      </motion.h3>
 
                     {/* DESCRIPTION */}
                     <p className="text-gray-600 mt-4 leading-7">
