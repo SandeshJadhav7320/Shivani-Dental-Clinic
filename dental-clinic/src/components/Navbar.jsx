@@ -2,6 +2,7 @@ import { useState, useEffect} from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import logo from "../assets/symbol.jpeg";
+ import { HashLink } from "react-router-hash-link";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -132,9 +133,13 @@ function Navbar() {
         </div>
 
         {/* Desktop Button */}
-        <button className="hidden md:block bg-blue-600 text-white px-5 py-2 rounded-full shadow hover:bg-blue-700 transition">
+       <HashLink
+          smooth
+          to="/contact#appointment-form"
+          className="hidden md:block bg-blue-600 text-white px-5 py-2 rounded-full shadow hover:bg-blue-700 transition"
+        >
           Book Appointment
-        </button>
+        </HashLink>
 
         {/* Mobile Menu Button */}
         <div className="md:hidden">
@@ -171,9 +176,15 @@ function Navbar() {
   </div>
 ))}
 
-          <button className="w-full bg-blue-600 text-white py-2 rounded-full mt-2">
+         
+
+          <HashLink
+            smooth
+            to="/contact#appointment-form"
+            className="hidden md:block bg-blue-600 text-white px-5 py-2 rounded-full shadow hover:bg-blue-700 transition"
+          >
             Book Appointment
-          </button>
+          </HashLink>
         </div>  
       )}
     </nav>

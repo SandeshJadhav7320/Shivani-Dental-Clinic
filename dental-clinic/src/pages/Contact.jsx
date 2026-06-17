@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
+import Footer from "../components/Footer";
 import {
   FaPhoneAlt,
   FaEnvelope,
@@ -220,30 +221,12 @@ ${message}
 
         </div>
 
-      </section>
-
-      {/* MAP SECTION */}
-      <section className="max-w-7xl mx-auto px-6 pb-20">
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="rounded-3xl overflow-hidden shadow-xl"
-        >
-          <iframe
-            title="Clinic Location"
-            src="YOUR_GOOGLE_MAP_EMBED_LINK"
-            width="100%"
-            height="450"
-            style={{ border: 0 }}
-            loading="lazy"
-          ></iframe>
-        </motion.div>
+        
 
       </section>
 
+        <Footer />
+      
     </div>
   );
 }

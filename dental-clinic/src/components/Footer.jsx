@@ -16,28 +16,35 @@ function Footer() {
         {/* CLINIC INFO */}
         <div>
           <h2 className="text-3xl font-bold">
-            Dr. Shivani’s Dental Clinic
+            Dr. Shivani's Dental & Aesthetic
           </h2>
 
           <p className="mt-4 text-gray-200 leading-7">
             Advanced and painless dental care with modern technology
-            and personalized treatment solutions.
+            and personalized treatment solutions for healthy and
+            confident smiles.
           </p>
 
           {/* SOCIAL ICONS */}
           <div className="flex gap-4 mt-6">
 
-            <div className="bg-white text-blue-600 p-3 rounded-full
-                            hover:bg-pink-500 hover:text-white
-                            transition duration-300 cursor-pointer">
+            <a
+              href="#"
+              className="bg-white text-blue-600 p-3 rounded-full
+                         hover:bg-pink-500 hover:text-white
+                         transition duration-300"
+            >
               <FaFacebookF />
-            </div>
+            </a>
 
-            <div className="bg-white text-blue-600 p-3 rounded-full
-                            hover:bg-pink-500 hover:text-white
-                            transition duration-300 cursor-pointer">
+            <a
+              href="#"
+              className="bg-white text-blue-600 p-3 rounded-full
+                         hover:bg-pink-500 hover:text-white
+                         transition duration-300"
+            >
               <FaInstagram />
-            </div>
+            </a>
 
           </div>
         </div>
@@ -51,40 +58,37 @@ function Footer() {
           <ul className="space-y-3 text-gray-200">
 
             <li>
-                <Link to="/" className="hover:text-pink-300">
+              <Link to="/" className="hover:text-pink-300">
                 Home
-                </Link>
+              </Link>
             </li>
 
             <li>
-                <Link to="/about-doctor" className="hover:text-pink-300">
-                About
-                </Link>
+              <Link
+                to="/about-doctor"
+                className="hover:text-pink-300"
+              >
+                About Doctor
+              </Link>
             </li>
 
-            <li className="hover:text-pink-300 cursor-pointer">
-              Services
+            <li>
+              <Link
+                to="/about-clinic"
+                className="hover:text-pink-300"
+              >
+                About Clinic
+              </Link>
             </li>
 
-            <li className="hover:text-pink-300 cursor-pointer">
-              Contact
+            <li>
+              <Link
+                to="/contact"
+                className="hover:text-pink-300"
+              >
+                Contact
+              </Link>
             </li>
-
-          </ul>
-        </div>
-
-        {/* SERVICES */}
-        <div>
-          <h3 className="text-2xl font-semibold mb-6">
-            Services
-          </h3>
-
-          <ul className="space-y-3 text-gray-200">
-
-            <li>Dental Implants</li>
-            <li>Root Canal</li>
-            <li>Braces & Aligners</li>
-            <li>Kids Dentistry</li>
 
           </ul>
         </div>
@@ -98,48 +102,77 @@ function Footer() {
           <div className="space-y-4 text-gray-200">
 
             <div className="flex items-start gap-3">
-              <FaMapMarkerAlt className="mt-2 text-pink-300 text-5xl" />
+              <FaMapMarkerAlt className="mt-1 text-pink-300 text-2xl" />
 
               <p>
-                B-10, 2nd Floor, B wing, Zinnia Elegans Vinode nagar, Laxmi Chowk Rd, Wakad, Pune, Maharashtra 411057
+                B-10, 2nd Floor, B Wing,
+                Zinnia Elegans Vinode Nagar,
+                Laxmi Chowk Rd, Wakad,
+                Pune - 411057
               </p>
             </div>
 
             <div className="flex items-center gap-3">
               <FaPhoneAlt className="text-pink-300 text-xl" />
 
-              <p>
-                91 90825 26482
-              </p>
+              <p>+91 90825 26482</p>
             </div>
 
             <div className="flex items-center gap-3">
               <FaEnvelope className="text-pink-300 text-xl" />
 
-              <p>
-                shivanib522@gmail.com
-              </p>
+              <p>shivanib522@gmail.com</p>
             </div>
 
           </div>
+        </div>
+
+        {/* MAP SECTION - RIGHT SIDE */}
+        <div>
+          <h3 className="text-2xl font-semibold mb-6">
+            Find Us
+          </h3>
+
+          <div
+            className="overflow-hidden rounded-xl shadow-xl
+                       border-2 border-white
+                       hover:scale-105 transition duration-300"
+          >
+            <iframe
+              title="Clinic Location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3781.3784049772753!2d73.74013117491964!3d18.602042166681027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bbe4a2096a07%3A0xe4f6c01bd6f2d117!2sDr.%20Shivani%E2%80%99s%20Dental%20%26%20Aesthetics!5e0!3m2!1sen!2sin!4v1781682901302!5m2!1sen!2sin"
+              width="100%"
+              height="200"
+              style={{ border: 0 }}
+              loading="lazy"
+              allowFullScreen
+            />
+          </div>
+
+          <p className="mt-3 text-sm text-gray-200">
+            Wakad, Pune, Maharashtra
+          </p>
         </div>
 
       </div>
 
       {/* BOTTOM */}
       <div className="border-t border-white/20 mt-12 pt-6 text-center text-gray-200">
-            Powered by{" "}
 
-            <a
-                href="https://wordlanetech.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-pink-300 hover:text-white font-semibold transition"
-            >
-                Word Lane Tech
-            </a>
+        Powered by{" "}
 
-            {" "}© 2026 Dr. Shivani’s Dental. All Rights Reserved.
+        <a
+          href="https://wordlanetech.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-pink-300 hover:text-white font-semibold"
+        >
+          Word Lane Tech
+        </a>
+
+        {" "}© 2026 Dr. Shivani's Dental & Aesthetic.
+        All Rights Reserved.
+
       </div>
 
     </footer>
