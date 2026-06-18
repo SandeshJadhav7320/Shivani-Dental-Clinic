@@ -49,12 +49,11 @@ function AboutDoctor() {
   },
 ];
   return (
-    <div className="bg-gray-100 py-10 px-6">
+    <div>
 
       {/* HERO SECTION */}
-   {/* HERO SECTION */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-blue-700 via-blue-500 to-cyan-400 text-white">
-
+  
+      <section className="relative overflow-hidden bg-white">
         {/* Animated Background Blobs */}
 
         <motion.div
@@ -146,7 +145,7 @@ function AboutDoctor() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
-                className="uppercase tracking-[5px] text-pink-200 font-semibold"
+                className="uppercase tracking-[5px] text-pink-400 font-semibold"
               >
                 Best Dentist in Wakad | Hinjewadi Pune
               </motion.p>
@@ -173,7 +172,7 @@ function AboutDoctor() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.8 }}
-                className="mt-6 text-lg text-blue-50 leading-8"
+                className="mt-6 text-lg text-blue-500 leading-8"
               >
                 Dedicated to providing advanced, ethical, and personalized
                 dental care. Helping patients achieve healthy, confident,
@@ -220,7 +219,7 @@ function AboutDoctor() {
                   <a href="tel:+919082526482">
                     <button
                       className="
-                      bg-white/20
+                      bg-pink-500
                       backdrop-blur-md
                       border border-white/30
                       px-8 py-4
@@ -248,23 +247,59 @@ function AboutDoctor() {
                 repeat: Infinity,
                 duration: 4,
               }}
-              className="relative"
+              className="relative flex justify-center"
             >
 
-              {/* Glow */}
+              {/* Background Shape */}
 
-              <div className="absolute inset-0 bg-white/20 blur-3xl rounded-full scale-90"></div>
+              <div
+                className="
+                  absolute
+                  top-6
+                  left-10
+                  w-[380px]
+                  h-[500px]
+                  bg-pink-100
+                  rounded-[60px]
+                  rotate-6
+                "
+              />
 
-              <img
+              {/* Second Shape */}
+
+              <div
+                className="
+                  absolute
+                  bottom-0
+                  right-8
+                  w-[380px]
+                  h-[500px]
+                  bg-blue-100
+                  rounded-[60px]
+                  -rotate-6
+                "
+              />
+
+              {/* Doctor Image */}
+
+              <motion.img
                 src={doctorImg2}
                 alt="Doctor"
+                whileHover={{
+                  scale: 1.03,
+                }}
                 className="
-                relative
-                w-full
-                rounded-[30px]
-                shadow-[0_20px_60px_rgba(0,0,0,0.25)]
-                border-4 border-white/20
-                backdrop-blur-sm"
+                  relative
+                  z-10
+                  w-[380px]
+                  h-[500px]
+                  object-cover
+                  rounded-t-[220px]
+                  rounded-b-[40px]
+                  border-8
+                  border-white
+                  shadow-2xl
+                "
               />
 
             </motion.div>

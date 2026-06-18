@@ -8,6 +8,7 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
   const location = useLocation();
+  const isHome = location.pathname === "/";
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -51,9 +52,9 @@ function Navbar() {
   return (
     <nav
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-          scrolled
-            ? "bg-white/90 backdrop-blur-md shadow-lg"
-            : "bg-transparent"
+          isHome && !scrolled
+            ? "bg-transparent"
+            : "bg-white shadow-md"
         }`}
       >
       <div className={`max-w-7xl mx-auto px-6 flex justify-between items-center transition-all duration-500 ${
@@ -68,7 +69,7 @@ function Navbar() {
             className="h-10 w-10 md:h-12 md:w-12 object-contain"
           />
           <h1 className={`text-lg md:text-xl font-bold ${
-              scrolled ? "text-blue-600" : "text-white"
+              scrolled ? "text-blue-600" : "text-gray-500"
             }`}>
             Dr. Shivani’s Dental
           </h1>
@@ -88,7 +89,7 @@ function Navbar() {
           ? "text-orange-400"
           : scrolled
           ? "text-gray-700 hover:text-blue-600"
-          : "text-white hover:text-orange-300"
+          : "text-grey-600 hover:text-orange-300"
       }`}
       >
         {link.name}
@@ -105,7 +106,7 @@ function Navbar() {
           className={`font-medium ${
           scrolled
             ? "text-gray-700 hover:text-blue-600"
-            : "text-white hover:text-orange-300"
+            : "text-grey-600 hover:text-orange-300"
         }`}
         >
           {link.name} ▾

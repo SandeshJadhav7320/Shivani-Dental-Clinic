@@ -1,106 +1,310 @@
+import { motion } from "framer-motion";
+import {
+  FaSmile,
+  FaShieldAlt,
+  FaCheckCircle,
+  FaCalendarCheck,
+  FaMagic,
+  FaTooth,
+  FaUserMd,
+  FaClinicMedical,
+  FaHeartbeat,
+  FaAward,
+  FaMicroscope,
+  FaStar,
+} from "react-icons/fa";
 
 function ServiceTemplate({
   title,
   subtitle,
   image,
-  description,
+  doctorImage,
+  introduction,
   benefits,
-  steps,
+  benefitIcons,
+  process,
+  whyChooseUs,
+  whyIcons,
 }) {
   return (
-    <div className="bg-gray-100">
+    <div className="bg-white">
 
-      {/* HERO */}
-      <div className="bg-blue-600 text-white text-center py-16 px-6">
-        <h1 className="text-4xl md:text-5xl font-bold">
-          {title}
-        </h1>
+      {/* HERO SECTION */}
 
-        <p className="mt-4 text-lg">
-          {subtitle}
-        </p>
-      </div>
+      <section className="max-w-7xl mx-auto px-6 py-20">
 
-      {/* MAIN */}
-      <div className="max-w-7xl mx-auto py-12 px-6 grid md:grid-cols-2 gap-10 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
 
-        {/* Image */}
-        <div>
-          <img
-            src={image}
-            alt={title}
-            className="w-full h-[400px] object-cover rounded-2xl shadow-lg"
-          />
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+          >
+            <h1 className="text-5xl md:text-6xl font-bold text-slate-800 leading-tight">
+              {title}
+            </h1>
+
+            <p className="mt-6 text-lg text-gray-600 leading-8">
+              {introduction}
+            </p>
+
+            <button className="mt-8 bg-blue-600 text-white px-8 py-4 rounded-full hover:bg-blue-700">
+              Book Consultation
+            </button>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: .8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="flex justify-center"
+          >
+            <img
+              src={image}
+              alt={title}
+              className="w-[450px] h-[450px] object-cover rounded-full shadow-2xl border-8 border-white"
+            />
+          </motion.div>
+
         </div>
 
-        {/* Description */}
-        <div>
-          <h2 className="text-3xl font-bold text-blue-600">
-            About Treatment
+      </section>
+
+      {/* BENEFITS */}
+
+      <section className="bg-blue-50 py-20">
+
+        <div className="max-w-7xl mx-auto px-6">
+
+          <h2 className="text-center text-4xl font-bold text-blue-700">
+            Benefits of Treatment
           </h2>
 
-          <p className="mt-4 text-gray-700 leading-relaxed">
-            {description}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-14">
+
+            {benefits.map((item, index) => {
+  const Icon = benefitIcons[index];
+
+  return (
+    <motion.div
+      key={index}
+      whileHover={{
+        y: -10,
+        scale: 1.03,
+      }}
+      className="group bg-white p-8 rounded-3xl shadow-lg
+      hover:shadow-blue-200 transition-all duration-500
+      border border-transparent hover:border-blue-200"
+    >
+      <div className="w-16 h-16 rounded-2xl bg-blue-100
+      flex items-center justify-center  mx-auto mb-5
+      group-hover:bg-pink-100 transition-all duration-500">
+
+        <Icon
+          className="text-4xl text-blue-600
+          group-hover:text-pink-500
+          transition-all duration-500"
+        />
+
+      </div>
+
+      <h3 className="text-xl font-semibold text-gray-800 text-center">
+        {item}
+      </h3>
+    </motion.div>
+  );
+})}
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* PROCESS */}
+
+      <section className="py-20">
+
+        <div className="max-w-5xl mx-auto px-6">
+
+          <h2 className="text-center text-4xl font-bold text-blue-700">
+            Treatment Process
+          </h2>
+
+          <div className="mt-16">
+
+            {process.map((step, index) => (
+
+              <motion.div
+                key={index}
+                whileHover={{ scale: 1.02 }}
+                className="flex gap-8 mb-12"
+              >
+                <div className="flex flex-col items-center">
+
+                  <div className="w-16 h-16 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xl">
+                    {index + 1}
+                  </div>
+
+                  {index !== process.length - 1 && (
+                    <div className="w-1 h-28 bg-blue-300"></div>
+                  )}
+
+                </div>
+
+                <div className="bg-white shadow-xl p-8 rounded-3xl flex-1">
+
+                  <h3 className="text-2xl font-bold text-blue-600">
+                    {step.title}
+                  </h3>
+
+                  <p className="mt-3 text-gray-600 leading-7">
+                    {step.description}
+                  </p>
+
+                </div>
+
+              </motion.div>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* WHY CHOOSE US */}
+
+      <section className="bg-slate-50 py-20">
+
+        <div className="max-w-7xl mx-auto px-6">
+
+          <h2 className="text-center text-4xl font-bold text-blue-700">
+            Why Choose Us
+          </h2>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-14">
+
+            {whyChooseUs.map((item, index) => {
+  const Icon = whyIcons[index];
+
+  return (
+    <motion.div
+      key={index}
+      whileHover={{
+        y: -10,
+        scale: 1.03,
+      }}
+      className="group relative overflow-hidden
+      bg-white rounded-3xl p-8 shadow-xl"
+    >
+
+      <div
+        className="absolute inset-0
+        bg-gradient-to-r
+        from-blue-600
+        to-pink-500
+        translate-y-full
+        group-hover:translate-y-0
+        transition-all duration-500"
+      />
+
+      <div className="relative z-10">
+
+        <div
+          className="w-16 h-16 rounded-2xl
+          bg-blue-100 flex items-center justify-center mx-auto mb-5
+          group-hover:bg-white/20 transition-all duration-500"
+        >
+
+          <Icon
+            className="text-4xl text-blue-600
+            group-hover:text-white transition-all duration-500 text"
+          />
+
+        </div>
+
+        <h3
+          className="text-xl font-semibold text-gray-800
+          group-hover:text-white transition-all duration-500"
+        >
+          {item}
+        </h3>
+
+      </div>
+
+    </motion.div>
+  );
+})}
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* TESTIMONIAL */}
+
+      <section className="py-20">
+
+        <div className="max-w-5xl mx-auto text-center px-6">
+
+          <FaSmile className="mx-auto text-6xl text-blue-600" />
+
+          <h2 className="text-4xl font-bold mt-6">
+            Hear From Our Happy Patients
+          </h2>
+
+          <p className="mt-8 text-xl text-gray-600 italic">
+            "Professional, painless treatment and amazing results.
+            Highly recommended!"
           </p>
 
-          <ul className="mt-6 space-y-2 text-gray-700">
-            {benefits.map((benefit, index) => (
-              <li key={index}>✔ {benefit}</li>
-            ))}
-          </ul>
         </div>
-      </div>
 
-      {/* STEPS */}
-      <div className="py-12 px-6">
-        <h2 className="text-3xl font-bold text-center text-blue-600">
-          Treatment Process
-        </h2>
+      </section>
 
-        <div className="w-full mx-auto mt-10 space-y-6 ">
-          <div className="max-w-7xl mx-auto mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {steps.map((step, index) => (
-                    <div
-                    key={index}
-                    className="bg-white shadow-xl overflow-hidden grid md:grid-cols-2 hover:scale-105 rounded-3xl "
-                    >
+      {/* CTA SECTION */}
 
-                    {/* Image */}
-                    <div>
-                        <img
-                        src={step.image}
-                        alt={step.title}
-                        className="w-full h-[380px] object-cover rounded-3xl"
-                        />
-                    </div>
+      <section className="py-20 px-6">
 
-                    {/* Content */}
-                    <div className="p-8 flex flex-col justify-center">
-                        <h3 className="text-2xl font-bold text-blue-600">
-                        Step {index + 1}: {step.title}
-                        </h3>
+        <div className="max-w-7xl mx-auto">
 
-                        <p className="mt-4 text-gray-700 leading-relaxed">
-                        {step.description}
-                        </p>
-                    </div>
+          <div className="bg-blue-700 rounded-[60px] overflow-hidden">
 
-                    </div>
-                ))}
+            <div className="grid lg:grid-cols-2 items-center">
+
+              <div className="p-12 text-white">
+
+                <h2 className="text-5xl font-bold">
+                  Book An Appointment
+                </h2>
+
+                <p className="mt-6 text-lg">
+                  Let us help you achieve a healthy,
+                  confident and beautiful smile.
+                </p>
+
+                <button className="mt-8 bg-white text-blue-700 px-8 py-4 rounded-full font-semibold">
+                  Book Now
+                </button>
+
+              </div>
+
+              <div className="flex justify-center">
+                <img
+                  src={doctorImage}
+                  alt=""
+                  className="h-[420px] object-contain"
+                />
+              </div>
+
             </div>
+
+          </div>
+
         </div>
-      </div>
 
-      {/* CTA */}
-      <div className="bg-blue-600 text-white text-center py-12">
-        <h2 className="text-3xl font-bold">
-          Book Your Appointment Today
-        </h2>
-
-        <button className="mt-6 bg-pink-500 px-6 py-3 rounded-lg hover:bg-pink-600">
-          Get Appointment
-        </button>
-      </div>
+      </section>
 
     </div>
   );

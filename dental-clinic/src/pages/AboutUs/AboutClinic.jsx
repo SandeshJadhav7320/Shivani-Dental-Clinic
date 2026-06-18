@@ -8,48 +8,67 @@ import Footer from "../../components/Footer.jsx";
 
 function AboutClinic() {
   return (
-    <div className="bg-whitw">
+    <div className="bg-white">
+        <section className="py-24 bg-white overflow-hidden">
+            <div className="max-w-7xl mx-auto px-6">
 
-      {/* HERO SECTION */}
-      <div className="bg-blue-600 text-white text-center py-16 px-6">
-        <h1 className="text-4xl md:text-5xl font-bold">
-          About Our Clinic
-        </h1>
-        <p className="mt-4 text-lg">
-          Advanced & painless dental care for your perfect smile
-        </p>
-      </div>
+              <div className="grid lg:grid-cols-2 gap-16 items-center">
 
-      {/* MAIN SECTION */}
-      <div className="max-w-7xl mx-auto py-12 px-6 grid md:grid-cols-2 gap-10 items-center">
+                {/* Image */}
+                <div className="relative">
 
-        {/* Image */}
-        <div>
-          <img
-            src={clinicImg}
-            alt="Clinic"
-            className="rounded-2xl shadow-lg w-full h-[400px] object-cover"
-          />
-        </div>
+                  <div className="absolute -top-8 -left-8 w-full h-full bg-blue-100 rounded-[80px]"></div>
 
-        {/* Content */}
-        <div>
-          <h2 className="text-4xl font-bold text-blue-600">
-            Dr. Shivani’s Dental Braces & Dental Care
-          </h2>
+                  <img
+                    src={clinicImg}
+                    alt="Clinic"
+                    className="
+                      relative z-10
+                      w-full
+                      h-[500px]
+                      object-cover
+                      rounded-tl-[120px]
+                      rounded-br-[120px]
+                      shadow-2xl
+                    "
+                  />
 
-          <p className="mt-4 text-gray-700 leading-relaxed text-xl">
-            Our clinic is equipped with modern dental technology to provide
-            high-quality, painless, and personalized treatments. We focus on
-            patient comfort and long-lasting results.
-          </p>
+                </div>
 
-          <p className="mt-4 text-gray-700 text-xl">
-            Located in Wakad | Hinjewadi, Pune, we offer a wide range of dental
-            services under one roof.
-          </p>
-        </div>
-      </div>
+                {/* Content */}
+                <div>
+
+                  <p className="uppercase tracking-[4px] text-pink-500 font-semibold">
+                    About Our Clinic
+                  </p>
+
+                  <h2 className="text-5xl font-bold text-blue-600 mt-4">
+                    Dr. Shivani’s Dental Braces & Dental Care
+                  </h2>
+
+                  <div className="w-24 h-1 bg-pink-500 mt-6 mb-8"></div>
+
+                  <p className="text-gray-700 text-lg leading-8">
+                    Our clinic is equipped with modern dental technology to provide
+                    high-quality, painless and personalized treatments.
+                  </p>
+
+                  <p className="mt-6 text-gray-700 text-lg leading-8">
+                    We focus on patient comfort, advanced procedures and
+                    long-lasting results.
+                  </p>
+
+                  <p className="mt-6 text-gray-700 text-lg leading-8">
+                    Located in Wakad | Hinjewadi, Pune, we provide complete
+                    dental care under one roof.
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
+          </section>
 
       {/* WHY CHOOSE US */}
       <div className="max-w-9xl mx-auto px-6 py-10 bg-blue-600">
