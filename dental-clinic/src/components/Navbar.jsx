@@ -51,7 +51,7 @@ function Navbar() {
 
   return (
     <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 w-full z-[99999] transition-all duration-500 ${
           isHome && !scrolled
             ? "bg-transparent"
             : "bg-white shadow-md"
@@ -113,18 +113,38 @@ function Navbar() {
         </button>
 
         {openDropdown === link.name && (
-          <div className="absolute left-0 mt-2 w-44 bg-white shadow-lg rounded-lg z-50">
-            {link.dropdown.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                onClick={() => setDropdownOpen(false)}
-                className="block px-4 py-2 hover:bg-gray-100"
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
+          <div
+  className="
+    absolute
+    left-0
+    mt-2
+    w-52
+    rounded-xl
+    bg-black/40
+    backdrop-blur-lg
+    border border-white/20
+    shadow-xl
+    z-50
+  "
+>
+  {link.dropdown.map((item) => (
+    <Link
+      key={item.name}
+      to={item.path}
+      onClick={() => setOpenDropdown(null)}
+      className="
+    block
+    px-4
+    py-3
+    text-white
+    hover:bg-white/10
+    transition
+  "
+    >
+      {item.name}
+    </Link>
+  ))}
+</div>
         )}
       </>
     )}
@@ -137,7 +157,7 @@ function Navbar() {
        <HashLink
           smooth
           to="/contact#appointment-form"
-          className="hidden md:block bg-blue-600 text-white px-5 py-2 rounded-full shadow hover:bg-blue-700 transition"
+          className="block bg-blue-600 text-white px-5 py-2 rounded-full text-center hover:bg-blue-700"
         >
           Book Appointment
         </HashLink>
@@ -152,42 +172,48 @@ function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white shadow-md px-6 py-4 space-y-4">
-{navLinks.map((link) => (
-  <div key={link.name}>
-    
-    {link.dropdown && (
-  <>
-    <p className="font-semibold text-gray-700">
-      {link.name}
-    </p>
-
-    {link.dropdown.map((item) => (
-      <Link
-        key={item.name}
-        to={item.path}
-        onClick={() => setIsOpen(false)}
-        className="block ml-4 mt-2 text-gray-600"
-      >
-        {item.name}
-      </Link>
-    ))}
-  </>
-)}
-  </div>
-))}
-
-         
-
-          <HashLink
-            smooth
-            to="/contact#appointment-form"
-            className="hidden md:block bg-blue-600 text-white px-5 py-2 rounded-full shadow hover:bg-blue-700 transition"
+  <div className="md:hidden bg-white shadow-md px-6 py-4 space-y-4">
+    {navLinks.map((link) => (
+      <div key={link.name}>
+        {/* Normal Link */}
+        {!link.dropdown ? (
+          <Link
+            to={link.path}
+            onClick={() => setIsOpen(false)}
+            className="block text-gray-700 font-medium"
           >
-            Book Appointment
-          </HashLink>
-        </div>  
-      )}
+            {link.name}
+          </Link>
+        ) : (
+          <>
+            <p className="font-semibold text-gray-700">
+              {link.name}
+            </p>
+
+            {link.dropdown.map((item) => (
+              <Link
+                key={item.name}
+                to={item.path}
+                onClick={() => setIsOpen(false)}
+                className="block ml-4 mt-2 text-gray-600"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </>
+        )}
+      </div>
+    ))}
+
+<HashLink
+  smooth
+  to="/contact#appointment-form"
+  className="hidden md:block bg-blue-600 text-white px-5 py-2 rounded-full"
+>
+  Book Appointment
+</HashLink>
+  </div>
+)}
     </nav>
   );
 }

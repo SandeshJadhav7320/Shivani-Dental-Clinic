@@ -2,6 +2,10 @@ import doctorImg from "../../assets/DrShivani.jpg";
 import doctorImg2 from "../../assets/aboutdoctor2.jpg";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useInView } from "react-intersection-observer";
+import CountUpModule from "react-countup";
+
+const CountUp = CountUpModule.default;
 
 import {
   FaTooth,
@@ -19,6 +23,7 @@ import {
   MdOutlineHealthAndSafety,
   MdMedicalServices,
 } from "react-icons/md";
+
 
 function AboutDoctor() {
 
@@ -48,12 +53,28 @@ function AboutDoctor() {
     icon: <MdOutlineHealthAndSafety />,
   },
 ];
+
+const {
+  ref: heroRef,
+  inView: heroInView,
+} = useInView({
+  threshold: 0.5,
+  triggerOnce: false,
+});
+
+const {
+  ref: statsRef,
+  inView: statsInView,
+} = useInView({
+  threshold: 0.5,
+  triggerOnce: false,
+});
   return (
     <div>
 
       {/* HERO SECTION */}
   
-      <section className="relative overflow-hidden bg-white">
+      <section className="relative overflow-hidden bg-white pt-24 md:pt-28">
         {/* Animated Background Blobs */}
 
         <motion.div
@@ -181,23 +202,61 @@ function AboutDoctor() {
 
               {/* Statistics */}
 
-              <div className="flex flex-wrap gap-8 mt-10">
-
+              <div
+                  ref={heroRef}
+                  className="flex flex-wrap gap-8 mt-10"
+                >
                 <div>
-                  <h2 className="text-4xl font-bold">5+</h2>
+                  <h2 className="text-4xl font-bold">
+  {heroInView ? (
+    <CountUp
+      start={0}
+      end={5}
+      duration={3}
+    />
+  ) : (
+    0
+  )}
+  +
+</h2>
+
                   <p>Years Experience</p>
                 </div>
 
                 <div>
-                  <h2 className="text-4xl font-bold">1000+</h2>
+                  <h2 className="text-4xl font-bold">
+  {heroInView ? (
+    <CountUp
+      start={0}
+      end={1000}
+      duration={3}
+      separator=","
+    />
+  ) : (
+    0
+  )}
+  +
+</h2>
+
                   <p>Happy Patients</p>
                 </div>
 
                 <div>
-                  <h2 className="text-4xl font-bold">90%</h2>
+                  <h2 className="text-4xl font-bold">
+  {heroInView ? (
+    <CountUp
+      start={0}
+      end={90}
+      duration={3}
+    />
+  ) : (
+    0
+  )}
+  %
+</h2>
+
                   <p>RCT Success</p>
                 </div>
-
               </div>
 
               {/* Buttons */}
@@ -311,31 +370,62 @@ function AboutDoctor() {
       </section>
 
 
-      <section className="py-16 bg-white">
+      <section
+  ref={statsRef}
+  className="py-16 bg-white"
+>
+  <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-6">
 
-        <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-6">
+    <div className="bg-blue-50 p-8 rounded-2xl text-center shadow">
+      <h2 className="text-4xl font-bold text-blue-600">
+        {statsInView ? (
+          <CountUp end={5} duration={3} />
+        ) : (
+          0
+        )}
+        +
+      </h2>
+      <p>Years Experience</p>
+    </div>
 
-          {[
-            ["5+", "Years Experience"],
-            ["1000+", "Happy Patients"],
-            ["90%", "RCT Success Rate"],
-            ["100%", "Patient Satisfaction"],
-          ].map((item, index) => (
-            <motion.div
-              key={index}
-              whileHover={{ scale: 1.05 }}
-              className="bg-blue-50 p-8 rounded-2xl text-center shadow"
-            >
-              <h2 className="text-4xl font-bold text-blue-600">
-                {item[0]}
-              </h2>
+    <div className="bg-blue-50 p-8 rounded-2xl text-center shadow">
+      <h2 className="text-4xl font-bold text-blue-600">
+        {statsInView ? (
+          <CountUp end={1000} duration={3} separator="," />
+        ) : (
+          0
+        )}
+        +
+      </h2>
+      <p>Happy Patients</p>
+    </div>
 
-              <p className="mt-2">{item[1]}</p>
-            </motion.div>
-          ))}
+    <div className="bg-blue-50 p-8 rounded-2xl text-center shadow">
+      <h2 className="text-4xl font-bold text-blue-600">
+        {statsInView ? (
+          <CountUp end={90} duration={3} />
+        ) : (
+          0
+        )}
+        %
+      </h2>
+      <p>RCT Success Rate</p>
+    </div>
 
-        </div>
-      </section>
+    <div className="bg-blue-50 p-8 rounded-2xl text-center shadow">
+      <h2 className="text-4xl font-bold text-blue-600">
+        {statsInView ? (
+          <CountUp end={100} duration={3} />
+        ) : (
+          0
+        )}
+        %
+      </h2>
+      <p>Patient Satisfaction</p>
+    </div>
+
+  </div>
+</section>
 
       <section className="max-w-7xl mx-auto px-6 py-20">
 
@@ -485,7 +575,7 @@ function AboutDoctor() {
                   key={index}
                   initial={{
                     opacity: 0,
-                    x: index % 2 === 0 ? -100 : 100,
+                    // x: index % 2 === 0 ? -100 : 100,
                   }}
                   whileInView={{
                     opacity: 1,

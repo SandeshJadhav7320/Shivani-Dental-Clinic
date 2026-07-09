@@ -36,7 +36,6 @@ import rootCanalImg from "../assets/service4.jpg";
 import checkupImg from "../assets/service5.jpg";
 import crownsImg from "../assets/service6.jpg";
 
-console.log("CountUp =", CountUp)
 
 
 function Home() {
@@ -301,8 +300,8 @@ const services = [
       </div>
 
       {/* ABOUT US SECTION */}
-        <section className="bg-white py-24 px-6 overflow-hidden">
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+        <section className="bg-white py-14 md:py-24 px-4 md:px-6 overflow-hidden">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
         {/* LEFT SIDE IMAGE */}
         <motion.div
@@ -313,14 +312,36 @@ const services = [
           className="relative"
         >
           {/* Circle Background */}
-          <div className="absolute -left-24 top-0 w-[600px] h-[600px] bg-gray-100 rounded-full z-0"></div>
+          <div className="
+    absolute
+    -left-10 md:-left-24
+    top-0
+    w-[280px]
+    h-[280px]
+    md:w-[600px]
+    md:h-[600px]
+    bg-gray-100
+    rounded-full
+    z-0
+  "></div>
 
           {/* Image */}
           <img
-            src={homeabout}
-            alt="Doctor"
-            className="relative z-10 w-full max-w-xl mx-auto rounded-lg shadow-xl"
-          />
+  src={homeabout}
+  alt="Doctor"
+  className="
+    relative
+    z-10
+    w-full
+    max-w-[280px]
+    sm:max-w-md
+    md:max-w-lg
+    lg:max-w-xl
+    mx-auto
+    rounded-2xl
+    shadow-xl
+  "
+/>
         </motion.div>
 
         {/* RIGHT CONTENT */}
@@ -334,14 +355,14 @@ const services = [
             About Us
           </p>
 
-          <h2 className="text-5xl font-bold text-gray-800 mt-4 leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-800 mt-4 leading-tight">
             Compassionate Care <br />
             For Your Perfect Smile
           </h2>
 
           <div className="w-20 h-1 bg-blue-500 mt-6 mb-8"></div>
 
-          <p className="text-gray-600 text-lg leading-8">
+          <p className="text-gray-600 text-base md:text-lg leading-7 md:leading-8">
             Dr. Shivani’s Dental & Aesthetic is dedicated to providing
             advanced, painless and personalized dental care.
             Your smile is our passion and commitment.
@@ -351,12 +372,12 @@ const services = [
           <div className="mt-10 space-y-8">
 
             <div className="flex items-start gap-5">
-              <div className="w-16 h-16 rounded-xl bg-blue-50 flex items-center justify-center text-3xl">
+              <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-blue-50 flex items-center justify-center text-2xl md:text-3xl flex-shrink-0">
                 🦷
               </div>
 
               <div>
-                <h3 className="text-xl font-bold text-blue-600">
+                <h3 className="text-lg md:text-xl font-bold text-blue-600">
                   Advanced Technology
                 </h3>
 
@@ -409,18 +430,17 @@ const services = [
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto mt-16 bg-white shadow-xl rounded-3xl p-8"
+          className="max-w-4xl mx-auto mt-12 md:mt-16 bg-white shadow-xl rounded-3xl p-5 md:p-8"
         >
-        <div className="grid md:grid-cols-3 text-center">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
 
           <div>
-            <h3 className="text-5xl font-bold text-blue-600">
+           <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-blue-600">
               <CountUp
                 start={0}
                 end={15}
                 duration={5}
                 enableScrollSpy
-                scrollSpyOnce
               />
               +
             </h3>
@@ -442,7 +462,7 @@ const services = [
                   duration={5}
                   separator=","
                   enableScrollSpy
-                  scrollSpyOnce
+                  
                 />
                 +
               </h3>
@@ -464,7 +484,7 @@ const services = [
                   duration={5}
                   separator=","
                   enableScrollSpy
-                  scrollSpyOnce
+                  
                 />
                 +
               </h3>
@@ -486,14 +506,7 @@ const services = [
           <section className="bg-white py-24 px-6">
 
             {/* HEADING */}
-            <div className="text-center max-w-3xl mx-auto">
-              <div
-                  className="absolute top-0 left-0 w-full h-1
-                            bg-gradient-to-r
-                            from-pink-500
-                            via-blue-500
-                            to-pink-500"
-                />
+            <div className="relative text-center max-w-3xl mx-auto">
 
               <motion.p
                   initial={{ opacity: 0, y: -30 }}
