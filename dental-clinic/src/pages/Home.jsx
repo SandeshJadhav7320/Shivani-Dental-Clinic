@@ -527,80 +527,61 @@ const services = [
                 {services.map((service, index) => (
 
                   <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 80 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{
-                        duration: 0.8,
-                        delay: index * 0.15,
-                      }}
-                      viewport={{ once: true }}
-                      whileHover={{
-                        y: -15,
-                        scale: 1.05,
-                        rotateY: 5,
-                      }}
-                      className="bg-white
-                                  hover:bg-blue-50
-                                  rounded-3xl
-                                  p-8
-                                  shadow-xl
-                                  hover:shadow-blue-300/50
-                                  transition-all duration-500
-                                  text-center
-                                  group
-                                  overflow-hidden
-                                  relative"
-                    >
-
-                    {/* ICON */}
-                    <div className=" flex justify-center mb-6">
-                      <motion.img
-                          src={service.image}
-                          alt={service.title}
-                          className="w-64 h-64 object-contain mx-auto"
-                          animate={{
-                            y: [0, -10, 0],
-                          }}
-                          transition={{
-                            duration: 3,
-                            repeat: Infinity,
-                            ease: "easeInOut",
-                          }}
-                          whileHover={{
-                            scale: 1.1,
-                          }}
-                        />
-                    </div>
-                    <div
-                      className="absolute inset-0
-                                  bg-gradient-to-br
-                                  from-blue-100
-                                  via-pink-50
-                                  to-blue-100
-                                  opacity-0
-                                  group-hover:opacity-100
-                                  transition-all duration-500
-                                "
-                    />
-
-                    {/* TITLE */}
-                    <motion.h3
-                        whileHover={{
-                          scale: 1.05,
-                          color: "#2563eb",
+                        key={index}
+                        initial={{ opacity: 0, y: 80 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{
+                          duration: 0.8,
+                          delay: index * 0.15,
                         }}
-                        className="text-2xl font-bold text-gray-800 mt-6"
+                        viewport={{ once: true }}
+                        whileHover={{
+                          y: -15,
+                          scale: 1.05,
+                        }}
+                        className="relative overflow-hidden rounded-3xl bg-white p-8 shadow-xl
+                                  hover:shadow-blue-300/50 transition-all duration-500 group"
                       >
-                        {service.title}
-                      </motion.h3>
 
-                    {/* DESCRIPTION */}
-                    <p className="text-gray-600 mt-4 leading-7">
-                      {service.description}
-                    </p>
+                        {/* Background */}
+                        <div
+                          className="absolute inset-0 -z-10
+                                    bg-gradient-to-br
+                                    from-blue-50
+                                    via-pink-50
+                                    to-cyan-50
+                                    opacity-0
+                                    group-hover:opacity-100
+                                    transition-all duration-500"
+                        />
 
-                  </motion.div>
+                        {/* Image */}
+                        <div className="flex justify-center mb-6 relative z-10">
+                          <motion.img
+                            src={service.image}
+                            alt={service.title}
+                            className="w-64 h-64 object-contain"
+                            animate={{ y: [0, -10, 0] }}
+                            transition={{
+                              duration: 3,
+                              repeat: Infinity,
+                              ease: "easeInOut",
+                            }}
+                            whileHover={{ scale: 1.08 }}
+                          />
+                        </div>
+
+                        {/* Title */}
+                        <h3 className="relative z-10 text-2xl font-bold text-gray-800">
+                          {service.title}
+                        </h3>
+
+                        {/* Description */}
+                        <p className="relative z-10 text-gray-600 mt-4 leading-7">
+                          {service.description}
+                        </p>
+
+                      </motion.div>
 
                 ))}
 
